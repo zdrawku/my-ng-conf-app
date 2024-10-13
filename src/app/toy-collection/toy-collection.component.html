@@ -23,8 +23,8 @@
       </igx-card-content>
       <igx-card-actions class="actions-content">
         <ng-container igxStart>
-          <button igxButton="flat" igxRipple class="button">
-            Button
+          <button igxButton="flat" igxRipple [routerLink]="['/toy-details', item.id]" class="button">
+            View details
           </button>
         </ng-container>
         <ng-container igxEnd>

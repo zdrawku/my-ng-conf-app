@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { CategoryModel } from '../models/my-api/category-model';
 import { ToyModel } from '../models/my-api/toy-model';
 import { ErrorHandlerService } from './error-handler.service';
@@ -28,5 +28,13 @@ export class MyAPIService {
     };
     return this.http.get<ToyModel[]>(`${API_ENDPOINT}/api/Toys/toysByCategoryID`, options)
       .pipe(catchError(ErrorHandlerService.handleError<ToyModel[]>('getToyModelList', [])));
+  }
+
+  public getToyModel(id: number): Observable<ToyModel | undefined> {
+    if (!id) {
+      return of(undefined);
+    }
+    return this.http.get<ToyModel | undefined>(`${API_ENDPOINT}/api/Toys/${id}`)
+      .pipe(catchError(ErrorHandlerService.handleError<ToyModel | undefined>('getToyModel', undefined)));
   }
 }

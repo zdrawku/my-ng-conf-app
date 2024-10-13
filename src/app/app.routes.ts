@@ -1,25 +1,32 @@
 import { Routes } from '@angular/router';
 import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';
 import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';
-import { View1Component } from './view1/view1.component';
-import { View2Component } from './view2/view2.component';
+import { ToyCollectionComponent } from './toy-collection/toy-collection.component';
+import { ToyDetailsComponent } from './toy-details/toy-details.component';
 import { View3Component } from './view3/view3.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'view1', pathMatch: 'full' },
+  { path: '', redirectTo: 'toy-collection', pathMatch: 'full' },
   { path: 'error', component: UncaughtErrorComponent },
   {
-    path: 'view1',
-    component: View1Component,
+    path: 'toy-collection',
+    component: ToyCollectionComponent,
     data: {
-      text: 'View 1'
+      text: 'Toy collection'
     }
   },
   {
-    path: 'view2',
-    component: View2Component,
+    path: 'toy-details',
+    component: ToyDetailsComponent,
     data: {
-      text: 'View 2'
+      text: 'Toy Details'
+    }
+  },
+  {
+    path: 'toy-details/:toyID',
+    component: ToyDetailsComponent,
+    data: {
+      text: 'Toy Details'
     }
   },
   {
